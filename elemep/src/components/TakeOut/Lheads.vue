@@ -1,12 +1,10 @@
 <template>
-    <div id="toubu">
-        这是头部
-    </div>
+    $END$
 </template>
 
 <script>
     export default {
-        name: "head"
+        name: "Lheads"
     }
 </script>
 
