@@ -27,7 +27,7 @@
     created(){
       this.axios.get(this.Luurl).then((p)=>{
        this.store=p.data;
-        console.log(this.store);
+        
       })
     }
   }
