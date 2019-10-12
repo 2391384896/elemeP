@@ -8,6 +8,7 @@ import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import { Header } from 'mint-ui';
 import { Tabbar, TabItem } from 'mint-ui';
+import Shipei from '../shepei'
 // require styles
 //网络请求
 import axios from 'axios'
@@ -24,7 +25,7 @@ new Vue({
   el: '#app',
   router,
   components: {
-    App,
+    App,Shipei
   },
   template: '<App/>'
 })
