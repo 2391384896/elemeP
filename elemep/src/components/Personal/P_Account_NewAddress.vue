@@ -58,11 +58,16 @@
             color2:'',
             color3:'',
             color4:'',
-            nullVal:''
+            nullVal:'',
+            arr4:[]
           };
        },
       created(){
          this.nullVal=this.$route.query.dizhi;
+         this.totalVue.$on("ppp1",(p)=>{
+           console.log(p)
+           this.nullVal=p;
+         })
       },
       methods:{
         skipToAddress(){
@@ -121,13 +126,16 @@
         phoneIs1(){
           if(this.isPhone1==false){
             this.isPhone1=!this.isPhone1;
+
           }
             this.phone1ValP='手机号可以为空/请输入正确的手机号';
         },
         addSuccess(){
+          // this.arr4.push([this.nameVal,this.phoneVal]);
           if(this.isChangeColor=='limegreen'){
                // totalVue2.$emit('addressMsg',[]);
                this.$router.push({path:'/accountAddress',query:{newAdd:[this.nameVal,this.phoneVal]}});
+               this.totalVue.$emit("chuan2",[this.nameVal,this.phoneVal])
           }
         }
       }

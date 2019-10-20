@@ -12,7 +12,7 @@
     <span class="pingjia" >评价</span>
     </div>
     <div class="container-fluid">
-         <router-link  class="zuo" v-for="(p,i) in datas" :key="i">{{p.name}}</router-link>
+         <li  class="zuo" v-for="(p,i) in datas" :key="i">{{p.name}}</li>
 
     </div>
     </div>
@@ -29,7 +29,7 @@
       created(){
           this.axios.get("https://elm.cangdu.org/shopping/v2/menu?restaurant_id=1").then((p)=>{
             this.datas=p.data;
-            console.log(this.datas)
+            console.log(this.datas[0])
           })
       }
     }

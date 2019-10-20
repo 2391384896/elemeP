@@ -50,8 +50,8 @@
         },
         changeFiled(){
           if( this.isChangeColor=='#3199e8'){
-            this.$router.push({path:'/pHome'});
-            totalVue1.$emit("accountMsg",this.p1Value);
+            this.$router.push({path:'/phome'});
+           this.totalVue.$emit("accountMsg",this.p1Value);
           }
         }
       }

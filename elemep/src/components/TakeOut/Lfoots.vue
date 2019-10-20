@@ -15,7 +15,7 @@
           </mt-tab-item>
           <mt-tab-item id="我的">
             <img slot="icon":src="idDss? head1:head2" @click="fours">
-            <p @click="threes" class="L_bottom">我的</p>
+            <p @click="fours" class="L_bottom">我的</p>
           </mt-tab-item>
       </mt-tabbar>
     </div>
@@ -24,8 +24,10 @@
 <script>
   export default {
         name: "Lfoots",
-
-      data(){
+    meta: {
+      keepAlive: false // 不需要被缓存
+    },
+        data(){
           return{
             idAss:true,
             idBss:true,
@@ -45,15 +47,16 @@
       methods:{
           ones(){
             //跳转路由，修改信息页面
-            this.$router.push({path:''});
-            this.idAss=false;
-            this.idBss=true,
+             
+              this.idAss=false;
+              this.idBss=true,
               this.idCss=true,
-              this.idDss=true
+              this.idDss=true,
+              this.$router.push({path:'/lbody'})
           },
           twos(){
             //跳转路由，修改信息页面
-            this.$router.push({path:''});
+            this.$router.push({path:'/Tsearch'});
             this.idBss=false;
             this.idAss=true,
               this.idCss=true,
@@ -61,7 +64,7 @@
         },
           threes(){
             //跳转路由，修改信息页面
-            this.$router.push({path:''});
+            this.$router.push({path:'/Tddlb'});
             this.idCss=false;
             this.idAss=true,
               this.idBss=true,
@@ -69,7 +72,7 @@
         },
           fours(){
             //跳转路由，修改信息页面
-            this.$router.push({path:''});
+            this.$router.push({path:'/phome'});
             this.idDss=false;
             this.idBss=true,
               this.idCss=true,

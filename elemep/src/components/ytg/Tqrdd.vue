@@ -2,7 +2,7 @@
 
     <div id="wrap">
       <div id="toubu">
-        <router-link to="/lstore/Lrestaurant">
+        <router-link :to="{path:'/lstore/Lrestaurant'}">
         <img  id="zj" src="../../assets/img_t/zuojian.png"  alt="">
         </router-link>
         <span id="qr">确认订单</span>

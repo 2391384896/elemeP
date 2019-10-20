@@ -59,13 +59,20 @@
         }
       },
       created(){
-
+        this.totalVue.$on("lll",(p)=>{
+          this.mingzi=p.name;
+          this.dianhua=p.name2;
+          this.dizhi=p.name3;
+          this.xiangxi=p.name4;
+          this.xuexiao=p.name5
+          this.ren=p.name6;
+        })
           this.mingzi=this.$route.query.name;
           this.dianhua=this.$route.query.name2;
           this.dizhi=this.$route.query.name3;
           this.xiangxi=this.$route.query.name4;
           this.xuexiao=this.$route.query.name5
-        this.ren=this.$route.query.name6
+          this.ren=this.$route.query.name6
           //setItem是传值
           localStorage.setItem("v3",this.mingzi)
           console.log(this.mingzi)

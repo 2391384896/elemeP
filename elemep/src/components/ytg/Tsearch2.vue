@@ -18,7 +18,7 @@
     </div>
     <h5  id="business">搜索历史</h5>
 <ul>
-  <li  class="ss" v-for="(p1,i1) in dizhi2" v-if="true" :key="i1" @click="tzwm(i1)">
+  <li class="ss" v-for="(p1,i1) in dizhi2" v-if="true" :key="i1" @click="tzwm(i1)">
     <p class="diyi">{{p1.name}}</p>
     <p class="dier">{{p1.address}}</p>
   </li>
@@ -84,15 +84,17 @@
 
         console.log(this.dizhi2[i].address)
         console.log(this.dizhi2[i].name)
-
+        console.log(this.dizhi2[i])
         this.$router.push({
-          path: "/Lbody"
-        })
+          path: "/lbody",
+          query:{name:this.dizhi2[i].name},
+        }),
+          this.totalVue.$emit("qw",this.dizhi2[i].name)
         storage.set('lishi',this.lishi)
       },
       tzwm2(){
         this.$router.push({
-          path: "/Lbody",
+          path: "/lbody",
 
         })
       },
@@ -104,7 +106,8 @@
 
      },
       back(){
-        history.go(-1)
+        // history.go(-1)
+       this.$router.push({path:"/Shouye"})
       }
     },
     mounted(){   /*生命周期函数       vue页面刷新就会触发的方法*/
@@ -124,6 +127,9 @@
     },
     created(){
       this.address = this.$store.state.address
+      this.totalVue.$on("puy",(p)=>{
+        this.address=p;
+      })
       console.log(this.lishi)
      // if(this.lishi){
      //
@@ -158,7 +164,7 @@
     /*position: absolute;*/
     margin-left: 0.4rem;
     margin-top:0.6rem;
-    opacity: ;
+    /*opacity: ;*/
   }
   #ll{
     display:inline-block;

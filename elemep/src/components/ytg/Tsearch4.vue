@@ -80,8 +80,10 @@
         console.log(p.name)
         this.$router.push({
           path: "/Ttjdz",query:{name:p.name},
+
           // query:{ndmz:this.ndmz}
         })
+        this.totalVue.$emit("getAdd_s",p.name)
 
         // this.urL.push({
         //   title:this.dizhi,

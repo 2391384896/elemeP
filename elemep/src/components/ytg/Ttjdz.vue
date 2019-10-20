@@ -44,6 +44,7 @@
 <script>
     export default {
         name: "Ttjdz",
+
       data(){
           return{
             qiehuan1:true,
@@ -54,7 +55,8 @@
             xiangxi:"",
             xuexiao:"",
             ts:false,
-            tishi:"请输入名字"
+            tishi:"请输入名字",
+            shuzu:[]
 
           }
       },
@@ -93,8 +95,11 @@
 
           }
           if(this.qiehuan1==true){
+
             this.$router.push({
+
               path:"/Txzdz",
+
               query:{
                 name:this.dongxi1,
                 name2:this.dongxi2,
@@ -103,7 +108,9 @@
                 name5:this.xuexiao,
                 name6:'先生'
               }
-            })
+            });
+
+            this.totalVue.$emit("lll",query)
           }else{
             this.$router.push({
               path:"/Txzdz",
@@ -123,6 +130,9 @@
       },
       created(){
          console.log(this.shouji)
+        this.totalVue.$on("getAdd_s",(p)=>{
+            this.model=p
+        })
           this.model=this.$route.query.name;
          this.dongxi1=localStorage.getItem("v1")
         //getItem接收值

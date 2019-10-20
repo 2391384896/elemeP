@@ -1,20 +1,20 @@
 <template>
     <div class="wrapper" >
-      <swiper :options="swiperOption"  ref="mySwiper">
+      <swiper :options="swiperOption" ref="mySwiper">
         <!-- slides -->
         <swiper-slide v-for="(slide1,ind) in Surlo" :key="ind" class="link_to_title">
-          <router-link :to="{}" class="link_to_body link_body" v-for="(v1,i1) in slide1" :key="i1">
+          <span  @click="combobox(v1)" class="link_to_body link_body" v-for="(v1,i1) in slide1" :key="i1">
             <img :src="Llurl+v1.image_url" alt="" class="link_to_food">
             {{v1.title}}
-          </router-link>
+          </span>
         </swiper-slide>
 
 
         <swiper-slide v-for="(slide1,ind) in Surlt" :key="ind+1" class="link_to_title">
-          <router-link :to="{}" class="link_to_body" v-for="(v1,i1) in slide1" :key="i1+1">
+          <span @click="combobox(v1)" class="link_to_body" v-for="(v1,i1) in slide1" :key="i1+1">
             <img :src="Llurl+v1.image_url" alt="" class="link_to_food">
             {{v1.title}}
-          </router-link>
+          </span>
         </swiper-slide>
 
         <div id="swiper-pagination"  slot="pagination"></div>
@@ -25,21 +25,22 @@
 </template>
 
 <script>
+  import { swiper, swiperSlide } from 'vue-awesome-swiper'
     export default {
         name: "Llunb",
+      components: {
+        swiper,
+        swiperSlide
+      },
 
       data(){
           return{
             swiperOption:{
-              loop: true, // 循环模式选项
-              // effect : 'cube',
-              // // 如果需要分页器
+              autoplay:true,
               pagination: {           //分页器
                 el: '#swiper-pagination',   //分页器选择器
-                clickable: true,
-                bulletClass: 'my-bullet',
-                bulletActiveClass: 'my-bullet-active'//分页器类型
               },
+              loop:true,
               paginationClickable: true,
             },
             Lurl:"https://elm.cangdu.org/v2/index_entry",
@@ -57,24 +58,25 @@
          // console.log(this.eats);
          this.eats.forEach ((index,item)=> {
            this.eat.push(index);
-
          })
          // console.log(this.eat);
          //分割数组
          this.Surlo.push(this.eat.slice(0,8));
          this.Surlt.push(this.eat.slice(8,16));
-         // console.log(this.Surlo);
-         // console.log(this.Surlt);
-       })
 
+       })
+      },
+      methods:{
+        combobox(v1){
+          this.$router.push({path:'/LcomboBox',query:{name:v1}})
+          this.totalVue.$emit("nameV",v1)
+        }
       },
       computed: {
         swiper() {
           return this.$refs.mySwiper.swiper
         }
-      },
-
-
+      }
     }
 </script>
 

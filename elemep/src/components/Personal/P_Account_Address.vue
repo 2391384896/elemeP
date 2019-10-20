@@ -23,6 +23,9 @@
   // import totalVue2 from "./serviceEvent"
     export default {
         name: "P_Account_Address",
+      meta:{
+        keepAlive:false
+      },
       data(){
         return {
           xOut:false,
@@ -34,8 +37,12 @@
         };
       },
       created(){
-        // totalVue2.$on("addressMsg",this.getAddressMsg);
         this.arr.push(this.$route.query.newAdd);
+        console.log(this.arr);
+        this.totalVue.$on("chuan2",(p)=>{
+          this.arr.push(p)
+          console.log(this.arr);
+        });
       },
       methods:{
         skipToAccount(){

@@ -14,7 +14,7 @@
       </div>
       <div v-show="classbus" id="business">
         <h4>商家</h4>
-        <div  class="shangjia" :to={} v-for="(p,i) in datas" :key="i" @click="sj()">
+        <div  class="shangjia" :to={} v-for="(p,i) in datas" :key="i" @click="sj(p)">
 
           <img class="img1" :src="'//elm.cangdu.org/img/'+p.image_path" >
           <div class="xinxi" @click="cz()">
@@ -80,10 +80,14 @@
         },
           sj(p){
             console.log(p)
+            this.$router.push({path:"/lstore",query:{neir:p}})
+            this.totalVue.$emit("lstores",p)
           },
-        cz(){
+        cz(p){
           // localStorage.setItem("username",);
-          
+          console.log(p)
+
+
         },
       tijiao(){
           // console.log(this.aaa)

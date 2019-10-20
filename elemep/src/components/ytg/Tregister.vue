@@ -90,6 +90,7 @@
       },
 
       login(){
+
         console.log(this.username)
         if(this.username==""){
         this.ts=true;
@@ -99,9 +100,14 @@
         }else if(this.codeNumber==""){
           this.tishi="请输入验证码"
           this.ts=true;
+        }else{
+          this.$router.push({
+            path:"/phome",
+            query:{sss:this.username}
+          })
         }
 
-        localStorage.setItem("zh",this.username)
+        // localStorage.setItem("zh",this.username)
 
          // this.$router.push({
          //   path:"/Woshishi",

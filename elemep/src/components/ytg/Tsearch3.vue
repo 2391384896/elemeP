@@ -73,15 +73,17 @@
       },
       tzwm(p,i){
         console.log(p.name);
-        this.dizhi=p.name;
-        localStorage.setItem("v5",p.name)
+        this.totalVue.$emit("ppp1",p.name);
+
+        // this.dizhi=p.name;
+        // localStorage.setItem("v5",p.name)
         //
         // console.log(p)
         // this.$store.commit("getAddress2",p.address)
         // this.$store.commit("getAddress2",p.name)
         this.$router.push({
           path: "/addAddress",
-          query:{dizhi:this.dizhi}
+          query:{dizhi:p.name}
         })
 
         // this.urL.push({

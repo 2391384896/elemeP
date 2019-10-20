@@ -1,5 +1,6 @@
 <template>
      <div id="heads">
+
        <mt-header title="标题" class="mt_header">
          <!--返回搜索页-->
          <router-link to="{}" slot="left">

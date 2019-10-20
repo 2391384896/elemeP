@@ -11,7 +11,7 @@
       <div id="leftImg">
         <img src="../../assets/tx1.png" alt="">
         <div id="p1">
-          <p id="sp1">{{zhanghuming}}11111</p>
+          <p id="sp1">{{zhanghuming}}</p>
           <p id="sp2">
             <img src="../../assets/phone1.png" alt="">
             <span>绑定手机</span>
@@ -77,24 +77,30 @@
         <div class="empty"></div>
       </div>
     </div>
-
+<Lfoots></Lfoots>
   </div>
 </template>
 
 <script>
+  import Lfoots from "../TakeOut/Lfoots";
   export default {
     name: "P_Home",
+    meta: {
+      keepAlive: false // 不需要被缓存
+    },
+    components: {Lfoots},
+    // abstract:false,
     data(){
       return {
         money:'',
         num:'',
         count:'',
-        zhanghuming:'登录/注册111'
+        zhanghuming:'登录/注册'
       }
     },
     methods:{
       pLeave(){
-        this.$router.push({path:'/homeLeave'});
+        this.$router.push({path:'/Tddlb'});
       },
       accountMsg(){
         if(this.zhanghuming=='登录/注册'){
@@ -134,6 +140,13 @@
       centerSkip(){
         this.$router.push({path:'/service'});
       }
+    },
+    created(){
+      this.zhanghuming=this.$route.query.sss;
+      this.totalVue.$on("accountMsg",(v)=>{
+        this.zhanghuming=v;
+      })
+        console.log(this.zhanghuming);
     }
   }
 </script>
