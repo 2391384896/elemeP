@@ -1,18 +1,17 @@
 <template>
-  <div id="home">
+  <div id="pHome">
     <!--第一部分-->
-    <mt-header title="我的">
-      <router-link :to="{path:'/leavePersonal'}" slot="left">
-        <mt-button icon="back"></mt-button>
-      </router-link>
-    </mt-header>
+    <div id="pHead" >
+      <img @click="pLeave" src="../../assets/lArrow.png" alt="">
+      我的
+    </div>
 
     <!--第二部分-->
     <div id="pMsg" @click="accountMsg">
       <div id="leftImg">
         <img src="../../assets/tx1.png" alt="">
         <div id="p1">
-          <p id="sp1">账户名</p>
+          <p id="sp1">{{zhanghuming}}11111</p>
           <p id="sp2">
             <img src="../../assets/phone1.png" alt="">
             <span>绑定手机</span>
@@ -89,53 +88,97 @@
       return {
         money:'',
         num:'',
-        count:''
+        count:'',
+        zhanghuming:'登录/注册111'
       }
     },
     methods:{
+      pLeave(){
+        this.$router.push({path:'/homeLeave'});
+      },
       accountMsg(){
-        this.$router.push({path:'/account'});
+        if(this.zhanghuming=='登录/注册'){
+          this.$router.push({path:'/Tregister'});
+        }else{
+          this.$router.push({path:'/account'});
+        }
+
       },
       moneySkip(){
         this.$router.push({path:'/money'});
       },
       numSkip(){
-        this.$router.push({path:'/num'});
+        this.$router.push({path:'/discount'});
       },
       countSkip(){
-        this.$router.push({path:'/count'});
+        this.$router.push({path:'/integral'});
       },
       orderSkip(){
         this.$router.push({path:'/order'});
       },
       shopSkip(){
-        this.$router.push({path:'/shop'});
+        // this.$router.push({path:'/shop'});
+        this.$dialog.alert({
+          width:280,
+          overlay:false,
+          // transition:transform(),
+          message: '无权进入'
+        });
       },
       vipSkip(){
-        this.$router.push({path:'/vip'});
+        this.$router.push({path:'/vipCenter'});
       },
       downloadSkip(){
-        this.$router.push({path:'/download'});
+        this.$router.push({path:'/download',query:{count:1}});
       },
       centerSkip(){
-        this.$router.push({path:'/center'});
+        this.$router.push({path:'/service'});
       }
     }
   }
 </script>
 
 <style scoped>
-  #home{
-    font-size: 0.8rem;
+  *{
+    margin: 0;
+    padding: 0;
   }
+  #pHome{
+    /*height: 100%;*/
+    background: #f5f5f5;
+    font-size: 1rem;
+  }
+
+  #pHead{
+    color:white;
+    width: 100%;
+    padding: 0.4rem 0 0.4rem 0;
+    text-align: center;
+    background: #26a2ff;
+    position: relative;
+  }
+  #pHead>img{
+    width:1rem;
+    height:1rem;
+    position: absolute;
+    left: 0.2rem;
+    top: 0.5rem;
+  }
+
   #pMsg{
     background:#26a2ff;
-    padding: 0.1rem;
+    padding: 1rem 0.2rem;
     position: relative;
+    font-size: 0.9rem;
   }
   #leftImg{
     float: left;
   }
+  #leftImg>img{
+    width: 3rem;
+    height: 3rem;
+  }
+
   #rightA{
     float: right;
     position: absolute;
@@ -143,22 +186,32 @@
     right: 0;
     transform: translate(-50%,0);
   }
+  #rightA>img{
+    width: 1rem;
+    height: 1rem;
+  }
+
   #p1{
     color:whitesmoke;
     display: inline-block;
   }
+
   #sp1{
     font-weight: bold;
   }
   #sp2>img{
+    width: 0.8rem;
+    height: 0.8rem;
     margin-top: 0.5rem;
     vertical-align: -0.1rem;
   }
+
   #third{
     width: 100%;
     background: white;
     text-align: center;
   }
+
   #money,#num{
     width: 30%;
     padding: 0.8rem 0 0.8rem 0;
@@ -172,6 +225,7 @@
     text-align: center;
     display: inline-block;
   }
+
   .sameSize1{
     font-size: 1.2rem;
     font-weight: bold;
@@ -187,6 +241,7 @@
     font-weight: bold;
     color: green;
   }
+
   #fourth,#fifth{
     margin-top: 0.6rem;
     width: 100%;
@@ -195,8 +250,11 @@
   .rowStyle{
     padding: 0.6rem 0 0.6rem 0;
   }
+
   .fourImg{
-    vertical-align: -0.2rem;
+    width: 0.8rem;
+    height: 0.8rem;
+    vertical-align: middle;
     float: left;
     margin-left: 0.3rem;
   }
@@ -205,8 +263,13 @@
     float: left;
   }
   .fourImg2{
+    width:0.8rem ;
+    height: 0.8rem;
     float: right;
+    margin-right: 0.3rem;
   }
+
+
   .empty{
     clear: both;
   }

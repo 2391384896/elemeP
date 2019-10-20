@@ -7,12 +7,10 @@
         <span @click="inOutX">{{bjToWc}}</span>
       </div>
       <!--新地址-->
-      <div v-if="isDelete" class="newAddress">
-        <p>花海小区</p>
-        <p>手机号</p>
-        <img v-if="xOut" src="../../assets/cha.png" alt="" @click="deleteDiv">
+      <div  class="newAddress" :class="{newAddress1:num==index-1}" v-for="(val,index) in arr" :key="index">
+          <p v-for="(v,i) in val">{{v}}</p>
+        <img v-if="xOut" src="../../assets/cha.png" alt="" @click="deleteDiv(index)">
       </div>
-      
       <!--新增部分-->
       <div class="addAddress" @click="addAddress">
         新增地址
@@ -22,19 +20,26 @@
 </template>
 
 <script>
+  // import totalVue2 from "./serviceEvent"
     export default {
-        name: "P_Account_Adress",
+        name: "P_Account_Address",
       data(){
         return {
           xOut:false,
           isDelete:true,
           addressArr:[],
-          bjToWc:'编辑'
+          bjToWc:'编辑',
+          arr:[],
+          num:0
         };
+      },
+      created(){
+        // totalVue2.$on("addressMsg",this.getAddressMsg);
+        this.arr.push(this.$route.query.newAdd);
       },
       methods:{
         skipToAccount(){
-          this.$router.push({path:'/accountInfo'});
+          this.$router.push({path:'/account'});
         },
         inOutX(){
           this.xOut=!this.xOut;
@@ -47,10 +52,13 @@
         addAddress(){
           this.$router.push({path:'/addAddress'});
         },
-        deleteDiv(){
+        deleteDiv(p){
+            console.log(this.arr[p]);
+             this.arr.splice(p,1)
           this.isDelete=false;
         }
       }
+
     }
 </script>
 
@@ -115,5 +123,8 @@
     position: absolute;
     top: 1.1rem;
     right: 0.5rem;
+  }
+  .newAddress1{
+    background: darkorchid;
   }
 </style>
